@@ -5,7 +5,7 @@ machines using libvirt on linux.
 
 Related projects:
 
-* https://github.com/galexrt/k8s-vagrant-multi-node (virtualbox)
+* https://github.com/galexrt/k8s-vagrant-multi-node (virtualbox, many features)
 
 # usage
 
