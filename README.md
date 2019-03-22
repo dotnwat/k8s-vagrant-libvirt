@@ -3,6 +3,11 @@
 A minimal setup for running multi-node kubernetes in vagrant virtual
 machines using libvirt on linux.
 
+Current supported configuration(s):
+
+* guest: centos 7
+* network: flannel
+
 Related projects:
 
 * https://github.com/galexrt/k8s-vagrant-multi-node (virtualbox, many features)
@@ -43,10 +48,21 @@ NUM_DISKS = 1
 DISK_GBS = 10
 ```
 
-Guest and kubernetes
+# loading docker images
 
-* centos 7
-* flannel
+Use the [vagrant-docker_load][https://rubygems.org/gems/vagrant-docker_load] plugin to upload Docker images into Vagrant machines
+
+```bash
+vagrant plugin install vagrant-docker_load
+```
+
+An example of loading a [rook@master][https://github.com/rook/rook] build
+
+```bash
+[~/src/kubensis]$ vagrant docker-load build-2568df12/ceph-amd64 rook/ceph:master
+Loaded image: build-2568df12/ceph-amd64:latest
+Loaded image: build-2568df12/ceph-amd64:latest
+```
 
 # troubleshooting
 
