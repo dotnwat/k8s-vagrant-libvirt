@@ -3,14 +3,14 @@
 A minimal setup for running multi-node kubernetes in vagrant virtual
 machines using libvirt on linux.
 
+Related projects:
+
+* https://github.com/galexrt/k8s-vagrant-multi-node (virtualbox, many features)
+
 Current supported configuration(s):
 
 * guest: centos 7
 * network: flannel
-
-Related projects:
-
-* https://github.com/galexrt/k8s-vagrant-multi-node (virtualbox, many features)
 
 # usage
 
