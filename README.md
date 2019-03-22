@@ -50,13 +50,13 @@ DISK_GBS = 10
 
 # loading docker images
 
-Use the [vagrant-docker_load][https://rubygems.org/gems/vagrant-docker_load] plugin to upload Docker images into Vagrant machines
+Use the [vagrant-docker_load](https://rubygems.org/gems/vagrant-docker_load) plugin to upload Docker images into Vagrant machines
 
 ```bash
 vagrant plugin install vagrant-docker_load
 ```
 
-An example of loading a [rook@master][https://github.com/rook/rook] build
+An example of loading a [rook@master](https://github.com/rook/rook) build
 
 ```bash
 [~/src/kubensis]$ vagrant docker-load build-2568df12/ceph-amd64 rook/ceph:master
