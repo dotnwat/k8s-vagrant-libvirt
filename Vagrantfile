@@ -30,10 +30,9 @@ Vagrant.configure("2") do |config|
   end
 
   (0..NUM_WORKERS-1).each do |i|
-    WORKER_IP = "#{WORKER_IP_BASE}" + i.to_s.rjust(2, '0')
     config.vm.define "worker#{i}" do |worker|
       worker.vm.hostname = "worker#{i}"
-      worker.vm.network :private_network, ip: WORKER_IP
+      worker.vm.network :private_network, ip: "#{WORKER_IP_BASE}" + i.to_s.rjust(2, '0')
       (1..NUM_DISKS).each do |j|
         worker.vm.provider :libvirt do |libvirt|
           libvirt.storage :file, :size => "#{DISK_GBS}G"
