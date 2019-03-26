@@ -59,3 +59,4 @@ modprobe br_netfilter
 sysctl --system
 
 swapoff -a
+sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
