@@ -18,6 +18,7 @@ Vagrant.configure("2") do |config|
     libvirt.graphics_type = 'none'
     libvirt.memory = 2048
     libvirt.cpus = 2
+    libvirt.qemu_use_session = false
   end
 
   config.vm.provision "shell", path: "common.sh"
