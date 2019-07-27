@@ -22,12 +22,23 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", path: "common.sh"
+  config.vm.provision "shell", path: "local-storage/create-volumes.sh"
 
   config.vm.define "master" do |master|
     master.vm.hostname = "master"
     master.vm.network :private_network, ip: MASTER_IP
     master.vm.provision "shell", path: "master.sh",
       env: { "MASTER_IP" => MASTER_IP, "TOKEN" => TOKEN }
+
+    master.vm.provision :file do |file|
+      file.source = "local-storage/storageclass.yaml"
+      file.destination = "/tmp/local-storage-storageclass.yaml"
+    end
+    master.vm.provision :file do |file|
+      file.source = "local-storage/provisioner.yaml"
+      file.destination = "/tmp/local-storage-provisioner.yaml"
+    end
+    master.vm.provision "shell", path: "local-storage/install.sh"
   end
 
   (0..NUM_WORKERS-1).each do |i|
