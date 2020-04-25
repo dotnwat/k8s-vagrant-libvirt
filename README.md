@@ -1,4 +1,4 @@
-# kubensis
+# k8s-vagrant-libvirt
 
 A minimal setup for running multi-node kubernetes in vagrant virtual
 machines using libvirt on linux.
@@ -29,7 +29,7 @@ vagrant ssh master -c "sudo cat /etc/kubernetes/admin.conf" > ${HOME}/.kube/conf
 Test cluster access from your host
 
 ```
-[~/src/kubensis]$ kubectl get nodes
+[~/src/k8s-vagrant-libvirt]$ kubectl get nodes
 NAME      STATUS   ROLES    AGE   VERSION
 master    Ready    master   30m   v1.13.4
 worker0   Ready    <none>   30m   v1.13.4
@@ -59,7 +59,7 @@ vagrant plugin install vagrant-docker_load
 An example of loading a [rook@master](https://github.com/rook/rook) build
 
 ```bash
-[~/src/kubensis]$ vagrant docker-load build-2568df12/ceph-amd64 rook/ceph:master
+[~/src/k8s-vagrant-libvirt]$ vagrant docker-load build-2568df12/ceph-amd64 rook/ceph:master
 Loaded image: build-2568df12/ceph-amd64:latest
 Loaded image: build-2568df12/ceph-amd64:latest
 ```
@@ -69,23 +69,23 @@ Loaded image: build-2568df12/ceph-amd64:latest
 The following is a summary of the environments and applications that are known to work
 
 ```
-[~/src/kubensis]$ lsb_release -d
+[~/src/k8s-vagrant-libvirt]$ lsb_release -d
 Description: Fedora release 29 (Twenty Nine)
 
-[~/src/kubensis]$ vagrant version
+[~/src/k8s-vagrant-libvirt]$ vagrant version
 Installed Version: 2.1.2
 
-[~/src/kubensis]$ vagrant plugin list
+[~/src/k8s-vagrant-libvirt]$ vagrant plugin list
 vagrant-libvirt (0.0.40, system)
 ```
 
 Ceph distributed storage via Rook
 
 ```
-[~/src/kubensis]$ kubectl -n rook-ceph-system logs rook-ceph-operator-b996864dd-l5czk | head -n 1
+[~/src/k8s-vagrant-libvirt]$ kubectl -n rook-ceph-system logs rook-ceph-operator-b996864dd-l5czk | head -n 1
 2019-03-21 16:09:18.168066 I | rookcmd: starting Rook v0.9.0-323.g2447520 with arguments '/usr/local/bin/rook ceph operator'
 
-[~/src/kubensis]$ kubectl -n rook-ceph get pods
+[~/src/k8s-vagrant-libvirt]$ kubectl -n rook-ceph get pods
 NAME                                  READY   STATUS      RESTARTS   AGE
 rook-ceph-mgr-a-6b5cdfcb6f-hg7tr      1/1     Running     0          4m33s
 rook-ceph-mon-a-6cb6cfdb95-grgsz      1/1     Running     0          4m56s
